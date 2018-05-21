@@ -1,0 +1,14 @@
+version: '2'
+services:
+  ssldeploy:
+    image: jkpark/docker-letsencrypt_clouddns
+    restart: always
+    network_mode: bridge
+    volumes:
+      - ./data/ssl:/etc/letsencrypt/archive
+      - ./data/certificate:/mnt:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - EMAIL=email
+      - DNS_LIST=dns list
+      - CERTIFICATE_FILE=certificate_file_name
